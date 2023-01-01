@@ -2,11 +2,6 @@ import { Schema as _Schema, model } from "mongoose";
 const Schema = _Schema;
 
 const DishSchema = new Schema({
-    restaurantId: {
-        type: String,
-        required: true,
-
-    },
     name: {
         type: String,
         required: true
