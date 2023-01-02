@@ -76,7 +76,7 @@ export async function getDishPhotos(request, response) {
         if (request.params.imageid >= dish.photoUrls.length) {
             response.status(404).send("No image found!");
         }
-        response.sendFile('image-1672572328872-908889981.jpeg', { 
+        response.sendFile(dish.photoUrls[request.params.imageid], { 
             root: path.join(__dirname, '../uploads') 
         });
     } catch (error) {
