@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
 import { fileURLToPath } from 'url';
-import upload from "./config/storage.js";
+const upload = require("./config/storage.config.js");
 import { getAllDishes, 
     createDish, 
     readDish, 
