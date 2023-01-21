@@ -10,11 +10,11 @@ module.exports = function(app) {
         next();
     });
 
-    app.route("/dishes")
+    app.route("/api/dishes")
         .get(controller.getAllDishes)
         .post(upload.single("image"), controller.createDish);
     
-    app.route("/dishes/:id")
+    app.route("/api/dishes/:id")
         .get(controller.readDish)
         .put(controller.updateDish)
         .delete(controller.deleteDish);
