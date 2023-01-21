@@ -1,12 +1,7 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+const db = require('../models');
+const Dish = db.dish;
 
-import Dish from "../models/dish.model.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export async function getAllDishes(request, response) {
+async function getAllDishes(request, response) {
     const dishes = await Dish.find({});
 
     try {
@@ -16,7 +11,7 @@ export async function getAllDishes(request, response) {
     }
 }
 
-export async function createDish(request, response) {
+async function createDish(request, response) {
     const newDish = new Dish(request.body);
     newDish.photoUrls.push(request.file.filename)
 
@@ -28,7 +23,7 @@ export async function createDish(request, response) {
     }
 }
 
-export async function readDish(request, response) {
+async function readDish(request, response) {
     const dish = await Dish.findById(request.params.id);
 
     try {
@@ -42,7 +37,7 @@ export async function readDish(request, response) {
     }
 }
 
-export async function updateDish(request, response) {
+async function updateDish(request, response) {
     try {
         const dish = await Dish.findByIdAndUpdate(request.params.id, request.body);
         await dish.save();
@@ -52,7 +47,7 @@ export async function updateDish(request, response) {
     }
 }
 
-export async function deleteDish(request, response) {
+async function deleteDish(request, response) {
     try {
         const dish = await Dish.findByIdAndDelete(request.params.id);
 
@@ -65,3 +60,5 @@ export async function deleteDish(request, response) {
         response.status(500).send(err);
     }
 }
+
+module.exports = { getAllDishes, createDish, readDish, updateDish, deleteDish}

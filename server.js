@@ -1,15 +1,9 @@
-import express from "express";
-import bodyParser from "body-parser";
-const dotenv = require("dotenv");
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const dotenv = require('dotenv');
 const cors = require("cors");
 const cookieSession = require("cookie-session");
-const upload = require("./config/storage.config.js");
-
-import { getAllDishes, 
-    createDish, 
-    readDish, 
-    updateDish, 
-    deleteDish } from "./controllers/DishController.js";
 
 //import "./config/db.js";
 
@@ -26,6 +20,7 @@ app.use(bodyParser.json());
 
 app.use(cookieSession({
     name: "",
+    keys: [""],
     secret: "",
     httpOnly: true,
 }))
@@ -86,17 +81,9 @@ function initial() {
     })
 }
 
-require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
-
-app.route("/dishes")
-    .get(getAllDishes)
-    .post(upload.single("image"), createDish);
-
-app.route("/dishes/:id")
-    .get(readDish)
-    .put(updateDish)
-    .delete(deleteDish);
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
+require('./routes/dish.routes')(app);
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

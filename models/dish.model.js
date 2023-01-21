@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Dish = mongoose.Model(
+const Dish = mongoose.model(
     "Dish",
     new mongoose.Schema({
         name: {
