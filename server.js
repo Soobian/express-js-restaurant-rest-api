@@ -2,9 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 const dotenv = require("dotenv");
 const cors = require("cors");
-const path = require("path");
-import { fileURLToPath } from 'url';
+const cookieSession = require("cookie-session");
 const upload = require("./config/storage.config.js");
+
 import { getAllDishes, 
     createDish, 
     readDish, 
@@ -23,6 +23,12 @@ app.use(express.static('uploads'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cookieSession({
+    name: "",
+    secret: "",
+    httpOnly: true,
+}))
 
 const db = require("./models");
 const Role = db.role;
