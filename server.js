@@ -84,6 +84,7 @@ function initial() {
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require('./routes/dish.routes')(app);
+require('./routes/review.routes')(app);
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

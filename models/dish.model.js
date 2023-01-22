@@ -40,7 +40,13 @@ const Dish = mongoose.model(
         photoUrls: {
             type: [String],
             required: true,
-        }
+        },
+        reviews: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Review"
+            }
+        ],
     }, { collection: 'Dishes'})
 )
 

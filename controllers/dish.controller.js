@@ -1,7 +1,7 @@
 const db = require('../models');
 const Dish = db.dish;
 
-async function getAllDishes(request, response) {
+async function getDishes(request, response) {
     const dishes = await Dish.find({});
 
     try {
@@ -61,4 +61,4 @@ async function deleteDish(request, response) {
     }
 }
 
-module.exports = { getAllDishes, createDish, readDish, updateDish, deleteDish}
+module.exports = { getDishes, createDish, readDish, updateDish, deleteDish}

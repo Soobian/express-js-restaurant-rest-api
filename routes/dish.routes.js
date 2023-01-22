@@ -11,7 +11,7 @@ module.exports = function(app) {
     });
 
     app.route("/api/dishes")
-        .get(controller.getAllDishes)
+        .get(controller.getDishes)
         .post(upload.single("image"), controller.createDish);
     
     app.route("/api/dishes/:id")
