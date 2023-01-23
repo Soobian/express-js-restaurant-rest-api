@@ -11,6 +11,10 @@ const Review = mongoose.model(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Dish"
         },
+        grade: {
+            type: Number,
+            required: true,
+        },
         content: {
             type: String,
             required: true,
