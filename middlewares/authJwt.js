@@ -48,7 +48,7 @@ isAdmin = (req, res, next) => {
     });
 };
 
-isModerator = (req, res, next) => {
+isManager = (req, res, next) => {
     User.findById(req.userId).exec((err, user) => {
         if (err) {
             res.status(500).send({ message: err });
@@ -107,7 +107,7 @@ isUser = (req, res, next) => {
 const authJwt = {
     verifyToken,
     isAdmin,
-    isModerator,
+    isManager,
     isUser,
 };
 

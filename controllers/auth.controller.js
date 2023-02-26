@@ -39,7 +39,7 @@ const signup = (req, res) => {
                 });
             });
         } else {
-            Role.findOne({ name: "user" }, (err, role) => {
+            Role.findOne({ name: "client" }, (err, role) => {
                 if (err) {
                     res.status(500).send({ message: err });
                     return;
